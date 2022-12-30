@@ -1,0 +1,26 @@
+.divMenu {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.menu {
+    display: inline-block;
+
+}
+
+.menu .menuItem{
+    font-weight: 200;
+    text-transform: uppercase;
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 3px;
+    background-color: black;
+    transition: color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.menu .menuItem:hover {
+    box-shadow: inset 124px 0px 0px 20px white;
+    color: black;
+}
