@@ -2,16 +2,19 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "../../components/ItemDetail/ItemDetail";
+import { useCartContext } from "../../context/CartContext/CartContext";
 
 function ItemDetailContainer () {
     const [product, setProduct] = useState({})
     const [loading, setLoading] = useState (true)
-    const [inputType, setInputType] = useState("agregarCarrito")
+    const [isCant, setIsCant ] = useState(false)
 
-    const handleInter = () => {
-        setInputType("input")
+    const {addToCart} = useCartContext()
+
+    const onAdd = (cant) => {
+        addToCart({...product, cant})
+        setIsCant(true)
     }
-
 
     const {productId} = useParams()
 
@@ -26,7 +29,7 @@ function ItemDetailContainer () {
 
 
     return (
-       <ItemDetail product={product} loading={loading} inputType={inputType} handleInter={handleInter}/>
+       <ItemDetail product={product} loading={loading} isCant={isCant} onAdd={onAdd}/>
     )
 }
 

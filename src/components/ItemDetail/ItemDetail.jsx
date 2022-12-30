@@ -3,16 +3,8 @@ import ItemCount from "../ItemCount/ItemCount"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { InputCount } from "../InputCount/InputCount";
-import { ButtonCount } from "../ButtonCount/ButtonCount";
-import { useCartContext } from "../../context/CartContext/CartContext";
 
-
-export const ItemDetail = ({product, loading, inputType, handleInter}) => {
-
-    const {addToCart} = useCartContext()
-    const onAdd = (cant) => {
-        addToCart({...product, cant})
-    }
+export const ItemDetail = ({product, loading, onAdd, isCant}) => {
 
     return(
         <div>
@@ -40,18 +32,16 @@ export const ItemDetail = ({product, loading, inputType, handleInter}) => {
                         </Link>
                     </Card.Body>
 
+                    {isCant
+                        ?
+                    <InputCount/>
+                        :
                     <ItemCount stock={product.stock} initial={1} onAdd={onAdd}/>
+                    }
 
                 </Card>
 
-                <div>
-                    {inputType === "agregarCarrito"
-                        ?
-                    <ButtonCount handleInter={handleInter}/>
-                        :
-                    <InputCount/>
-                    }
-                </div>
+
 
             </div>}
 

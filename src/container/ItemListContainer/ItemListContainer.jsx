@@ -19,7 +19,7 @@ function ItemListContainer ({greeting}) {
         const queryCollection = collection(db, "productos")
         
         if (id) {
-            const queryFiltrada =  query(queryCollection, where('categoria','==', id), where('isActive', '==', true))
+            const queryFiltrada =  query(queryCollection, where("categoria","==", id))
 
             getDocs(queryFiltrada)
             .then(data => setProducts(data.docs.map(product=>({id:product.id,...product.data()}))))
@@ -32,7 +32,7 @@ function ItemListContainer ({greeting}) {
             .finally(()=> setLoading(false))   
         }      
     }, [id])
-    console.log("productos:", products )
+    
     return (
         <div className="divGeneral">
             <span style={greetingStyle}>{greeting}</span>

@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../context/CartContext/CartContext';
 import './CartWidget.css'
 
 function CartWidget () {
+    const {totalQuantity} = useCartContext()
+
     return (
         <div>
             <Link to="/cart">
@@ -9,7 +12,7 @@ function CartWidget () {
                 alt="Carrito - Salem Joyas" title="Carrito - Salem Joyas" height={40}/>
             </Link>
         
-            <span >{3}</span>
+            {totalQuantity() !== 0 && totalQuantity()}
         </div>
     )
 }
