@@ -1,14 +1,3 @@
-.divMenu {
-    display: flex;
-    justify-content: center;
-    justify-content: space-evenly;
-}
-
-.menu {
-    display: inline-block;
-
-}
-
 .menu .menuItem{
     font-weight: 200;
     text-transform: uppercase;

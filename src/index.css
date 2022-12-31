@@ -15,7 +15,9 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
+body {
+  background: linear-gradient(to top, grey, white)
+}
 
 a {
   font-weight: 500;

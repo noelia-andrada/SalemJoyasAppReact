@@ -4,6 +4,7 @@ import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { useState } from "react";
 import CartListF from "../../components/CartListF/CartListF";
 import Button from "react-bootstrap/esm/Button";
+import OrderId from "../../components/OrderId/OrderId";
 
 const CartContainer = () => {
     const {cartList, emptyCart, totalPrice, deleteOneItem} = useCartContext()
@@ -11,6 +12,7 @@ const CartContainer = () => {
     const [dataForm, setFormData] =  useState({
         name: "", email: "", phone: "", confirmEmail: ""
       })
+      const [orderId, setOrderId]= useState('')
 
     const addOrder = (e) => {
         e.preventDefault()
@@ -25,7 +27,7 @@ const CartContainer = () => {
         const queryCollection = collection(db, "orders")
 
         addDoc(queryCollection, order)
-        .then(resp => resp)
+        .then(resp => setOrderId(resp.id))
         .catch(err => console.log(err))
         .finally(() => emptyCart())
       }
@@ -38,22 +40,21 @@ const CartContainer = () => {
       }
     return (
         <div>
-            {cartList.length !== 0
-
-                    ? 
-
+            {orderId
+                ?
+            <OrderId orderId={orderId}/>
+                :
+            cartList.length !== 0 && !orderId
+                ? 
             <CartListF cartList={cartList} deleteOneItem={deleteOneItem} totalPrice={totalPrice}
             dataForm={dataForm} handleOnChange={handleOnChange} addOrder={addOrder} emptyCart={emptyCart}/>
-
-                    :
-                
-                <div>
-                    <h2 className="p-5 m-5">No hay productos en el carrito</h2>
-                    <Link to= "/" > 
-                      <Button variant="dark">Volver</Button>
-                     </Link>
-                </div>
-
+                :
+            <div>
+                <h2 className="p-5 m-5">No hay productos en el carrito</h2>
+                <Link to= "/" > 
+                  <Button variant="dark">Volver</Button>
+                 </Link>
+            </div>
             }
 
         </div>
