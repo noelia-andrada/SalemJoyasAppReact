@@ -18,14 +18,14 @@ const CartContainer = () => {
         order.buyer = dataForm
         order.price = totalPrice()
         
-        order.items = cartList.map(({id, price, name}) => ({id, price, name}))
+        order.items = cartList.map(({id, precio, nombre}) => ({id, precio, nombre}))
         
         const db = getFirestore()
-        const queryCollection = collection(db, 'orders')
+        const queryCollection = collection(db, "orders")
     
         addDoc(queryCollection, order)
-        .then(resp => console.log(resp))
-        .catch(err => console.log(err))
+        .then(resp => resp)
+        .catch(err => err)
         .finally(() => emptyCart())
       }
 
@@ -49,7 +49,7 @@ const CartContainer = () => {
                 
                 <div>
                     <h2>Carrito Vacio</h2>
-                    <Link to= '/' > Volver </Link>
+                    <Link to= "/" > Volver </Link>
                 </div>
 
             }
