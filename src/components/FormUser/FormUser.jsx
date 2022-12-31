@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/esm/Button"
 
 const FormUser = ({dataForm, handleOnChange, addOrder}) => {
     return (
@@ -13,7 +12,7 @@ const FormUser = ({dataForm, handleOnChange, addOrder}) => {
             <input type="text" onChange={handleOnChange} name='email' value={dataForm.email}
             placeholder="Correo electrónico"/>
 
-            <Button variant="primary">Terminar compra</Button>
+            <button className="btn btn-outline-success" >Terminar Compra</button>
         </form>
     )
 }

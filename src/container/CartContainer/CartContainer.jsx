@@ -17,14 +17,15 @@ const CartContainer = () => {
         const order = {}
         order.buyer = dataForm
         order.price = totalPrice()
+        
         order.items = cartList.map(({id, price, name}) => ({id, price, name}))
         
         const db = getFirestore()
         const queryCollection = collection(db, 'orders')
     
         addDoc(queryCollection, order)
-        .then(resp => resp)
-        .catch(err => err)
+        .then(resp => console.log(resp))
+        .catch(err => console.log(err))
         .finally(() => emptyCart())
       }
 
