@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { useState } from "react";
 import CartListF from "../../components/CartListF/CartListF";
+import Button from "react-bootstrap/esm/Button";
 
 const CartContainer = () => {
     const {cartList, emptyCart, totalPrice, deleteOneItem} = useCartContext()
@@ -22,7 +23,7 @@ const CartContainer = () => {
         
         const db = getFirestore()
         const queryCollection = collection(db, "orders")
-    
+
         addDoc(queryCollection, order)
         .then(resp => resp)
         .catch(err => console.log(err))
@@ -35,7 +36,6 @@ const CartContainer = () => {
           [e.target.name]: e.target.value
         })
       }
-
     return (
         <div>
             {cartList.length !== 0
@@ -48,8 +48,10 @@ const CartContainer = () => {
                     :
                 
                 <div>
-                    <h2>No hay productos en el carrito</h2>
-                    <Link to= "/" > Volver </Link>
+                    <h2 className="p-5 m-5">No hay productos en el carrito</h2>
+                    <Link to= "/" > 
+                      <Button variant="dark">Volver</Button>
+                     </Link>
                 </div>
 
             }

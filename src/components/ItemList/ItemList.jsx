@@ -2,7 +2,7 @@ import { Item } from "../Item/Item";
 
 function ItemList ({products, loading}) {
     return (
-        <section className="card border border-secondary d-inline-block">
+        <section className="card border border-secondary d-inline-block p-3">
 
             {loading
                 ?

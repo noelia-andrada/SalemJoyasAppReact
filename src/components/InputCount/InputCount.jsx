@@ -5,11 +5,11 @@ export const InputCount = () => {
     return (
         <>
             <Link to="/cart">
-                <Button variant="primary">Ver carrito de compras</Button>
+                <Button variant="dark">Ver carrito de compras</Button>
             </Link>
 
             <Link to="/">
-                <Button variant="primary">Seguir comprando</Button>
+                <Button variant="dark">Seguir comprando</Button>
             </Link>
         </>
     )

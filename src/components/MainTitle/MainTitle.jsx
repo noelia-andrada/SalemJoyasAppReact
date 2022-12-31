@@ -5,7 +5,7 @@ function MainTitle () {
     return (
         <div>
             <NavLink to="/">
-                <h1 className="mainTitle"> Salem Joyas</h1>
+                <h1 className="mainTitle text-decoration-none"> Salem Joyas</h1>
             </NavLink>
                 
         </div>

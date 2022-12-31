@@ -26,8 +26,8 @@ function ItemListContainer ({greeting}) {
     }, [id])
     
     return (
-        <div className="divGeneral">
-            <span style={greetingStyle}>{greeting}</span>
+        <div className="divGeneral d-flex flex-column">
+            <span className="d-inline-block p-5" style={greetingStyle}>{greeting}</span>
            <ItemList products={products} loading={loading}/>
         </div>
     )

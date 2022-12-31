@@ -7,16 +7,16 @@ import { InputCount } from "../InputCount/InputCount";
 export const ItemDetail = ({product, loading, onAdd, isCant}) => {
 
     return(
-        <div>
+        <div className="d-inline-block p-2 pt-5 pb-5">
             {loading
                 ?
             <img src="https://media.tenor.com/wXTO9bFFJXMAAAAC/loading-slow-internet.gif"
             alt="loading" title="loading"/>
                 :
-            <div key={product.id}>
+            <div key={product.id} className="d-flex flex-row" >
 
+                <Card.Img variant="top" style={{ width: '16rem' }} src={product.img} />
                 <Card style={{ width: '16rem' }} className="card border border-secondary">
-                    <Card.Img variant="top" src={product.img} />
 
                     <Card.Body>
                         <Card.Title>{product.nombre}</Card.Title>
@@ -28,7 +28,7 @@ export const ItemDetail = ({product, loading, onAdd, isCant}) => {
                         </Card.Text>
                         
                         <Link to="/">
-                          <Button variant="primary">Volver</Button>
+                          <Button variant="dark">Volver</Button>
                         </Link>
                     </Card.Body>
 
