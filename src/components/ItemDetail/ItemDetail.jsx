@@ -26,7 +26,7 @@ export const ItemDetail = ({product, loading, onAdd, isCant}) => {
                             <span className="card-text">Categoría: {product.categoria}</span>
                             <span className="card-text">Stock: {product.stock}</span>
                         </Card.Text>
-
+                        
                         <Link to="/">
                           <Button variant="primary">Volver</Button>
                         </Link>
@@ -40,9 +40,6 @@ export const ItemDetail = ({product, loading, onAdd, isCant}) => {
                     }
 
                 </Card>
-
-
-
             </div>}
 
         </div>

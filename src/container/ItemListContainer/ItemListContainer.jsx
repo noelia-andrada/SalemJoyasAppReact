@@ -7,8 +7,7 @@ import {collection, getDocs, getFirestore, query, where} from "firebase/firestor
 function ItemListContainer ({greeting}) {
     const greetingStyle = {fontSize: "200%"}
 
-    const [ products, setProducts ] = useState([])
-    const [ product, setProduct ] = useState({})
+    const [products, setProducts] = useState([])
     const [loading, setLoading] = useState (true)
 
 
@@ -17,20 +16,13 @@ function ItemListContainer ({greeting}) {
     useEffect(()=> {
         const db = getFirestore()
         const queryCollection = collection(db, "productos")
+        const filteredQuery =  id ? query(queryCollection, where("categoria","==", id)) : queryCollection
         
-        if (id) {
-            const queryFiltrada =  query(queryCollection, where("categoria","==", id))
-
-            getDocs(queryFiltrada)
-            .then(data => setProducts(data.docs.map(product=>({id:product.id,...product.data()}))))
-            .catch(err => err)
-            .finally(()=> setLoading(false))
-        } else {
-            getDocs(queryCollection)
-            .then(data => setProducts(data.docs.map(product=>({id:product.id,...product.data()}))))
-            .catch(err => err)
-            .finally(()=> setLoading(false))   
-        }      
+        getDocs(filteredQuery)
+        .then(data => setProducts(data.docs.map(product=>({id:product.id,...product.data()}))))
+        .catch(err => console.log(err))
+        .finally(()=> setLoading(false))
+     
     }, [id])
     
     return (

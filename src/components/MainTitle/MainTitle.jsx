@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import './Titulo.css'
+import './MainTitle.css'
 
-function TituloPrincipal () {
+function MainTitle () {
     return (
         <div>
             <NavLink to="/">
-                <h1 className="tituloPrincipal"> Salem Joyas</h1>
+                <h1 className="mainTitle"> Salem Joyas</h1>
             </NavLink>
                 
         </div>
     )
 }
 
-export default TituloPrincipal;
+export default MainTitle;

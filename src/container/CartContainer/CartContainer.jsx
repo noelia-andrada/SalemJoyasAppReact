@@ -8,7 +8,7 @@ const CartContainer = () => {
     const {cartList, emptyCart, totalPrice, deleteOneItem} = useCartContext()
 
     const [dataForm, setFormData] =  useState({
-        name: "", email: "", phone: ""
+        name: "", email: "", phone: "", confirmEmail: ""
       })
 
     const addOrder = (e) => {
@@ -25,7 +25,7 @@ const CartContainer = () => {
     
         addDoc(queryCollection, order)
         .then(resp => resp)
-        .catch(err => err)
+        .catch(err => console.log(err))
         .finally(() => emptyCart())
       }
 
@@ -48,7 +48,7 @@ const CartContainer = () => {
                     :
                 
                 <div>
-                    <h2>Carrito Vacio</h2>
+                    <h2>No hay productos en el carrito</h2>
                     <Link to= "/" > Volver </Link>
                 </div>
 
